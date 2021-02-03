@@ -22,3 +22,12 @@ const view = new Int16Array(buffer);
 console.log(ArrayBuffer.isView(view)); // true
 
 console.log(ArrayBuffer.isView(new Uint8Array([1,2])));// true
+
+// ArrayBuffer与字符串的相互转化
+// TextEncoder TextDecoder
+// 构造函数的传参指定字符串编码方式
+const decoder = new TextDecoder('utf8');
+const decoderBuffer = new ArrayBuffer(16);
+const decoderData = new Int32Array([1,2,3,4])
+const result = decoder.decode(decoderBuffer);
+const result1 = decoder.decode(decoderData);

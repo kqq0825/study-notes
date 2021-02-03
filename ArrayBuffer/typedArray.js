@@ -41,4 +41,45 @@ function concatTypedArray(resultConstructor, ...arrays) {
     }
     return newResults;
 }
-concatTypedArray(Uint8Array, Uint8Array.of(1, 2), Uint8Array.of(3, 4))
+concatTypedArray(Uint8Array, Uint8Array.of(1, 2), Uint8Array.of(3, 4));
+
+
+// TypedArray实例属性：buffer
+// 只读：返回指定内存对应的ArrayBuffer对象
+const v9 = new Int32Array(32);
+console.log(v9.buffer);
+
+// TypedArray实例属性：byteLength
+// 只读：占据的内存长度（字节）
+
+// TypedArray实例属性：byteOffset
+// 只读：从底层的ArrayBuffer对象的哪个字节读取
+
+// TypedArray实例方法：set()
+// 复制数组: v11复制v10数组的整段内容
+const v10 = new Int32Array(32);
+const v11 = new Int32Array(32);
+// 从v10[2]开始复制
+v11.set(v10, 2);
+
+// TypedArray实例方法：subArray()
+// 复制数组的一部分，在建立一个新的视图
+const v12 = new Int32Array(3);
+const v13 = v12.subarray(1,3);
+console.log(v12,v13); // Int32Array(3) [0, 0, 0] Int32Array(2) [0, 0]
+
+// TypedArray实例方法：slice()
+// 返回一个指定位置的新的TypedArray实例
+const v14 = Uint8Array.of(0, 1, 2);
+v14.slice(-1) //Uint8Array [2]
+
+
+// TypedArray所有构造函数的静态方法：of()
+// 将参数转化成TypedArray实例
+const v15 =  Uint8Array.of([1,2,3])
+
+// TypedArray.from (用法类似Array.from)
+// 参数1：数组（普通或者TypedArray） 参数2： 类map函数
+const v16 = Uint16Array.from([1,2,3]);
+const v17 = Uint16Array.from(v16, x => x*2);
+console.log(v16, v17); // Uint16Array(3) [1, 2, 3] Uint16Array(3) [2, 4, 6]
